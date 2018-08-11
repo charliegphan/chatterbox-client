@@ -5,14 +5,14 @@ var app = {
 };
 
 app.init = function() {
-  $('body').on('click', 'div.username', function() {
+  $(document).on('click', 'div.username', function() {
+    console.log($(this));
     app.handleUsernameClick($(this).text());
   });
 
-  var data = app.fetch(
+  app.fetch(
     'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
   );
-  console.log(data);
 };
 
 app.send = function(obj) {
@@ -34,6 +34,7 @@ app.fetch = function(url) {
   return $.ajax(url, {
     type: 'GET',
     contentType: 'application/json',
+    data: 'order=-createdAt',
     success: function(data) {
       console.log(data);
       for (var i = 0; i < data.results.length; i++) {
