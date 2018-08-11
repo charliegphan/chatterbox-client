@@ -8,7 +8,10 @@ var app = {
 
 app.init = function() {
   $(document).on('click', 'div.username', function() {
-    console.log($(this));
+
+    $('body').find($(this).attr('class').split(' ')[1]).css({ 'font-weight': 'bold' });
+
+
     app.handleUsernameClick($(this).text());
   });
 
@@ -95,6 +98,8 @@ app.clearMessages = function() {
 
 app.renderMessage = function(obj) {
   var newNode = $('<div></div>');
+  newNode.addClass('username');
+  newNode.addClass(obj.username);
   newNode.text(obj.username);
   $('#chats').append(newNode);
 };
