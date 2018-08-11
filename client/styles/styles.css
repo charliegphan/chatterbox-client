@@ -5,6 +5,10 @@ body {
     font-family: arial, sans-serif;
 }
 
+input {
+    width: 400px;
+}
+
 #main, #chats {
     width: 500px;
     margin: auto;
@@ -93,4 +97,6 @@ form input[type=text] {
     background-color: #c0deed;
     border: 
 }
+
+
 

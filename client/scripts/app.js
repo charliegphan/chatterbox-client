@@ -10,6 +10,16 @@ app.init = function() {
     app.handleUsernameClick($(this).text());
   });
 
+  $(document).on('click', 'input.post-input', function() {
+    console.log($(this).val());
+    app.send({
+      username: 'hardCodeEverything',
+      text: $(this).val(),
+      roomname: 'hardCodedLobby'
+    })
+  });
+  
+
   app.fetch(
     'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
   );
@@ -17,12 +27,13 @@ app.init = function() {
 
 app.send = function(obj) {
   $.ajax({
-    url: 'http://parse.CAMPUS.hackreactor.com/chatterbox/classes/messages',
+    url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
     type: 'POST',
     data: JSON.stringify(obj),
     contentType: 'application/json',
     success: function(data) {
       console.log('chatterbox: Message sent');
+      console.log(obj);
     },
     error: function(data) {
       console.error('chatterbox: Failed to send message', data);
