@@ -1,25 +1,29 @@
 // YOUR CODE HERE:
 var app = {
-  friends: []
+  friends: [],
+  server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages'
 };
 
-app.init = function() {};
+app.init = function() {
+  $('body').on('click', 'div.username', function() {
+    app.handleUsernameClick($(this).text());
+  });
+  var data = app.fetch();
+  console.log(data);
+};
 
-app.send = function() {
+app.send = function(obj) {
   $.ajax({
     url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
     type: 'POST',
-    data: JSON.stringify({
-      username: 'Mel Brooks',
-      text: 'It\'s good to be the king',
-      roomname: 'lobby'
-    }),
+    data: JSON.stringify(obj),
     contentType: 'application/json'
   });
 };
 
 app.fetch = function(url, callback) {
   $.ajax({
+    url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
     type: 'GET'
   });
 };
