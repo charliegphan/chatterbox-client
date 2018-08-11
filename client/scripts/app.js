@@ -61,3 +61,5 @@ app.renderRoom = function(string) {
 app.handleUsernameClick = function(username) {
   app.friends.push(username);
 };
+
+app.init();
